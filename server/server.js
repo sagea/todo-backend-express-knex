@@ -1,10 +1,11 @@
 const app = require('./server-config.js');
 const routes = require('./server-routes.js');
 const createOrganization = require('./routes/organization/createOrganization.js');
+const getOrganization = require('./routes/organization/getOrganization.js');
 
 const port = process.env.PORT || 5000;
 
-app.get('/api/v1/organization/:id');
+app.get('/api/v1/organization/:id', getOrganization);
 app.patch('/api/v1/organization/:id');
 app.post('/api/v1/organization', createOrganization);
 app.delete('/api/v1/organization/:id');
