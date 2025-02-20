@@ -5,6 +5,18 @@
   But the .returning() method will only work for PostgreSQL, MSSQL, and Oracle databases.
 */
 require('dotenv').config();
+const {
+  PGDATABASE,
+PGUSER,
+PGPASSWORD,
+PGPORT,
+} = process.env
+
+console.log(
+  PGDATABASE,
+PGUSER,
+PGPASSWORD,
+PGPORT,);
 module.exports = {
 
   test: {
@@ -12,7 +24,8 @@ module.exports = {
     connection: {
       database: process.env.PGDATABASE,
       user:     process.env.PGUSER,
-      password: process.env.PGPASSWORD
+      password: process.env.PGPASSWORD,
+      port:     process.env.PGPORT
     },
     pool: {
       min: 2,
@@ -28,7 +41,8 @@ module.exports = {
     connection: {
       database: process.env.PGDATABASE,
       user:     process.env.PGUSER,
-      password: process.env.PGPASSWORD
+      password: process.env.PGPASSWORD,
+      port:     process.env.PGPORT
     },
     pool: {
       min: 2,
@@ -44,7 +58,8 @@ module.exports = {
     connection: {
       database: 'my_db',
       user:     'username',
-      password: 'password'
+      password: 'password',
+      port:     '5432'
     },
     pool: {
       min: 2,
