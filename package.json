@@ -16,6 +16,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
+    "http-errors": "^2.0.0",
     "jest": "^24.9.0",
     "knex": "^3.1.0",
     "lodash": "^4.17.15",
@@ -26,6 +27,7 @@
     "zod-express-middleware": "^1.4.0"
   },
   "devDependencies": {
+    "@types/http-errors": "^2.0.4",
     "concurrently": "^4.0.1"
   }
 }
