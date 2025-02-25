@@ -21,6 +21,10 @@ app.patch('/api/v1/:id', routes.patchTodo);
 
 app.delete('/api/v1/', routes.deleteAllTodos);
 app.delete('/api/v1/:id', routes.deleteTodo);
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('Unknown error');
+})
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => console.log(`Listening on port ${port}`));
