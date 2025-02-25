@@ -1,6 +1,5 @@
 
 exports.up = function(knex) {
-  console.log()
   return knex.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     .createTable('organization', function(table) {
     table.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'))
