@@ -38,7 +38,7 @@ Bonus features include a simple frontend boostrapped with create-react-app and t
 6. Set up the database using Knex migrations.
 
     `cd server && knex migrate:latest`
-
+e
 7. Start the server on [http://localhost:5000](http://localhost:5000).
 
     `yarn server`
