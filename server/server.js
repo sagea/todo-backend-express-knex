@@ -6,6 +6,7 @@ import { updateOrganizationEndpoint } from './routes/organization/updateOrganiza
 import createHttpError from 'http-errors';
 import { deleteOrganizationEndpoint } from './routes/organization/deleteOrganization.js';
 import { createUserEndpoint } from './routes/user/createUser.js';
+import { userLoginEndpoint } from './routes/user/userLogin.js';
 
 const port = process.env.PORT || 5000;
 
@@ -17,6 +18,7 @@ app.delete('/api/v1/organization/:id', deleteOrganizationEndpoint);
 
 // user endpoints
 app.post('/api/v1/user', createUserEndpoint);
+app.post('/api/v1/user/login', userLoginEndpoint);
 
 const routes = generateRoutes();
 app.get('/api/v1/', routes.getAllTodos);

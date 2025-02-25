@@ -15,7 +15,6 @@ const createUser = middleware(async (req, res) => {
   // 400 role does not exist
   const { email, role } = req.body;
   const existingUser = await getUserByEmail(email);
-  console.log(existingUser)
   if (existingUser) {
     throw new createHttpError.BadRequest(`User with email "${email}" already exists.`);
   }
