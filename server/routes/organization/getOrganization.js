@@ -1,6 +1,6 @@
-const { z } = require('zod');
-const { validateRequest } = require('zod-express-middleware')
-const getOrganizationByIdSql = require('../../database/organization/get-organization-by-id')
+import { z } from 'zod';
+import { validateRequest } from 'zod-express-middleware'
+import {getOrganizationByIdSql} from '../../database/organization/get-organization-by-id.js'
 
 const getOrganizationParamSchema = z.object({
   id: z.string().uuid(),
@@ -18,7 +18,7 @@ const getOrganization = async (req, res) => {
   res.status(200).json(organization);
 }
 
-module.exports = [
+export const getOrganizationEndpoint = [
   // todo: user auth validation
   validateRequest({ params: getOrganizationParamSchema }),
   getOrganization,

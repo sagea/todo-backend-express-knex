@@ -1,8 +1,10 @@
-require('dotenv').config()
-const express = require('express');
-const https = require('https');
-const fs = require('fs');
-const bodyParser = require('body-parser');
+import * as dotenv from 'dotenv'
+import express from 'express';
+import https from 'node:https';
+import fs from 'node:fs';
+import bodyParser from 'body-parser';
+
+dotenv.config();
 
 const app = express();
 
@@ -18,4 +20,4 @@ app.use(function(req, res, next) {
   next();
 });
 
-module.exports = app;
+export default app;

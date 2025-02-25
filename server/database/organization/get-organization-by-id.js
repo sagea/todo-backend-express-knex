@@ -1,10 +1,6 @@
-const knex = require("../connection.js");
+import knex from "../connection.js";
 
-const getOrganizationById = async (id) => {
+export const getOrganizationByIdSql = async (id) => {
   const organization = await knex('organization').select('*').where({ id }).first();
   return organization;
 }
-
-
-
-module.exports = getOrganizationById

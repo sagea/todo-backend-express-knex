@@ -1,5 +1,5 @@
-const _ = require('lodash');
-const todos = require('./database/todo-queries.js');
+import _ from 'lodash';
+import * as todos from './database/todo-queries.js';
 
 function createToDo(req, data) {
   const protocol = req.protocol, 
@@ -57,17 +57,18 @@ function addErrorReporting(func, message) {
     }
 }
 
-const toExport = {
+export const generateRoutes = () => {
+  const toExport = {
     getAllTodos: { method: getAllTodos, errorMessage: "Could not fetch all todos" },
     getTodo: { method: getTodo, errorMessage: "Could not fetch todo" },
     postTodo: { method: postTodo, errorMessage: "Could not post todo" },
     patchTodo: { method: patchTodo, errorMessage: "Could not patch todo" },
     deleteAllTodos: { method: deleteAllTodos, errorMessage: "Could not delete all todos" },
     deleteTodo: { method: deleteTodo, errorMessage: "Could not delete todo" }
-}
+  }
 
-for (let route in toExport) {
-    toExport[route] = addErrorReporting(toExport[route].method, toExport[route].errorMessage);
+  for (let route in toExport) {
+      toExport[route] = addErrorReporting(toExport[route].method, toExport[route].errorMessage);
+  }  
+  return toExport;
 }
-
-module.exports = toExport;

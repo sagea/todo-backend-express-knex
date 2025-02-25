@@ -1,10 +1,6 @@
-const knex = require("../connection.js");
+import knex from "../connection.js";
 
-const createOrganization = async (title) => {
+export const createOrganizationSql = async (title) => {
   const organization = await knex('organization').insert({ title }).returning('*');
   return organization;
 }
-
-
-
-module.exports = createOrganization

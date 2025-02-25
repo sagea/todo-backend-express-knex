@@ -1,18 +1,18 @@
-const app = require('./server-config.js');
-const routes = require('./server-routes.js');
-const createOrganization = require('./routes/organization/createOrganization.js');
-const getOrganization = require('./routes/organization/getOrganization.js');
+import app from './server-config.js';
+import { generateRoutes } from './server-routes.js';
+import {createOrganizationEndpoint} from './routes/organization/createOrganization.js';
+import {getOrganizationEndpoint} from './routes/organization/getOrganization.js';
 
 const port = process.env.PORT || 5000;
 
-app.get('/api/v1/organization/:id', getOrganization);
+app.get('/api/v1/organization/:id', getOrganizationEndpoint);
 app.patch('/api/v1/organization/:id');
-app.post('/api/v1/organization', createOrganization);
+app.post('/api/v1/organization', createOrganizationEndpoint);
 app.delete('/api/v1/organization/:id');
 
 
 
-
+const routes = generateRoutes();
 app.get('/api/v1/', routes.getAllTodos);
 app.get('/api/v1/:id', routes.getTodo);
 
@@ -26,4 +26,4 @@ if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => console.log(`Listening on port ${port}`));
 }
 
-module.exports = app;
+export default app;

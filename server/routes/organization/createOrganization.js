@@ -1,6 +1,6 @@
-const { z } = require('zod');
-const { validateRequest } = require('zod-express-middleware')
-const createOrganizationSql = require('../../database/organization/create-organization.js')
+import { z } from 'zod'
+import { validateRequest } from 'zod-express-middleware'
+import {createOrganizationSql} from '../../database/organization/create-organization.js'
 
 const createOrganizationSchema = z.object({
   title: z.string().min(3),
@@ -12,7 +12,7 @@ const createOrganization = async (req, res) => {
   res.status(201).json(organization);
 }
 
-module.exports = [
+export const createOrganizationEndpoint = [
   // todo: user auth validation
   validateRequest({ body: createOrganizationSchema }),
   createOrganization,
