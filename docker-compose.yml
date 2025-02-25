@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - "7778:5432"
+    environment:
+      POSTGRES_USER: subscript
+      POSTGRES_PASSWORD: subscript
+      POSTGRES_DB: subscript-postgres-db
+    volumes:
+      - ./postgres-local-data:/var/lib/postgresql/data
