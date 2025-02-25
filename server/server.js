@@ -4,13 +4,14 @@ import {createOrganizationEndpoint} from './routes/organization/createOrganizati
 import {getOrganizationEndpoint} from './routes/organization/getOrganization.js';
 import { updateOrganizationEndpoint } from './routes/organization/updateOrganization.js';
 import createHttpError from 'http-errors';
+import { deleteOrganizationEndpoint } from './routes/organization/deleteOrganization.js';
 
 const port = process.env.PORT || 5000;
 
 app.get('/api/v1/organization/:id', getOrganizationEndpoint);
 app.patch('/api/v1/organization/:id', updateOrganizationEndpoint);
 app.post('/api/v1/organization', createOrganizationEndpoint);
-app.delete('/api/v1/organization/:id');
+app.delete('/api/v1/organization/:id', deleteOrganizationEndpoint);
 
 
 
