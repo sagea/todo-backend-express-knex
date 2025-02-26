@@ -2,6 +2,7 @@ import createHttpError from 'http-errors';
 import { config } from './config.js';
 import { middleware } from './middleware-helpers.js';
 import jsonwebtoken from 'jsonwebtoken';
+import { getUserById } from '../database/user/get-user-by-id.js';
 
 export const createJwt = (user) => {
   const jwtSecret = config('JWT_SECRET')
@@ -15,7 +16,7 @@ export const validateJwt = (jwt) => {
   return decoded
 }
 
-export const authMiddleware = middleware((req, res, next) => {
+export const authMiddleware = middleware(async (req, res, next) => {
   if (!req.headers.authorization) {
     console.log('no authorization header');
     throw new createHttpError.Unauthorized('Unauthorized');
@@ -27,7 +28,9 @@ export const authMiddleware = middleware((req, res, next) => {
   const token = req.headers.authorization.split(' ')[1]
   try {
     const decoded = validateJwt(token)
-    req.user = decoded
+    const user = await getUserById(decoded.id)
+    req.user = user
+
     next()
   } catch (error) {
     console.log('authorization error', error);

@@ -9,7 +9,8 @@ export const updateOrganizationSql = async (id, title) => {
       'title',
       'created_at as createdAt',
       'updated_at as updatedAt',
-      'deleted_at as deletedAt'
+      'deleted_at as deletedAt',
+      'creator_id as creatorId'
     ]);
   return organization;
 }

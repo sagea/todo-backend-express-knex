@@ -9,7 +9,7 @@ const createOrganizationSchema = z.object({
 
 const createOrganization = middleware(async (req, res) => {
   const { title } = req.body;
-  const organization = await createOrganizationSql(title);
+  const organization = await createOrganizationSql(req.user.id, title);
   res.status(201).json(organization);
 })
 
