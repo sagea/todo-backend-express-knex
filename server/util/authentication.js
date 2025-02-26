@@ -18,11 +18,9 @@ export const validateJwt = (jwt) => {
 
 export const authMiddleware = middleware(async (req, res, next) => {
   if (!req.headers.authorization) {
-    console.log('no authorization header');
     throw new createHttpError.Unauthorized('Unauthorized');
   }
   if (req.headers.authorization.split(' ')[0] !== 'Bearer') {
-    console.log('no bearer');
     throw new createHttpError.Unauthorized('Unauthorized');
   }
   const token = req.headers.authorization.split(' ')[1]
@@ -33,7 +31,6 @@ export const authMiddleware = middleware(async (req, res, next) => {
 
     next()
   } catch (error) {
-    console.log('authorization error', error);
     throw new createHttpError.Unauthorized('Unauthorized');
   }
 

@@ -7,8 +7,8 @@
     "client": "cd client && yarn start",
     "server": "cd server && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "test": "cd server && jest",
-    "test:watch": "cd server && jest --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
     "start": "cd server && node server.js",
     "start:database": "docker-compose up"
   },
@@ -24,6 +24,8 @@
     "nodemon": "^2.0.2",
     "pg": "^8.13.3",
     "supertest": "^4.0.2",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7",
     "zod": "^3.24.2",
     "zod-express-middleware": "^1.4.0"
   },

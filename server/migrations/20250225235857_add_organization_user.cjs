@@ -3,7 +3,6 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  console.log('hello')
   return knex.schema.createTable('user_organization', function (table) {
     table.uuid('user_id').references('users.id');
     table.uuid('organization_id').references('organization.id');

@@ -3,11 +3,14 @@ import app from '../../server.js';
 
 
 // a helper function to make a POST request.
-export function post(url, body) {
+export function post(url, body, jwt) {
   const httpRequest = request(app).post(url);
   httpRequest.send(body);
   httpRequest.set('Accept', 'application/json')
   httpRequest.set('Origin', 'http://localhost:5000')
+  if (jwt) {
+    httpRequest.set('Authorization', `Bearer ${jwt}`);
+  }
   return httpRequest;
 }
 
