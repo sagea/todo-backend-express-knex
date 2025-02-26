@@ -4,6 +4,7 @@ import {getOrganizationByIdSql} from '../../database/organization/get-organizati
 import { deleteOrganizationSql } from '../../database/organization/delete-organization.js';
 import { middleware } from '../../util/middleware-helpers.js';
 import createError from 'http-errors';
+import { authMiddleware } from '../../util/authentication.js';
 
 const deleteOrganizationParamSchema = z.object({
   id: z.string().uuid(),
@@ -16,6 +17,9 @@ const deleteOrganization = middleware(async (req, res) => {
   if (!organization) {
     throw new createError.NotFound(`Organization not found for "${id}"`)
   }
+  if (organization.creatorId !== req.user.id) {
+    throw new createError.Forbidden('You are not allowed to delete this organization')
+  }
 
   await deleteOrganizationSql(id)
   
@@ -24,6 +28,7 @@ const deleteOrganization = middleware(async (req, res) => {
 
 export const deleteOrganizationEndpoint = [
   // todo: user auth validation
+  authMiddleware,
   validateRequest({
     params: deleteOrganizationParamSchema,
   }),
