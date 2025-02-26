@@ -1,2 +1,1 @@
-
-export const createOrganizationSql = vi.fn();
+export const createOrganizationSql = vi.fn()

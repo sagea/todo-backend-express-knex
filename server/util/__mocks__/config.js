@@ -3,5 +3,5 @@ const mockConfig = {
 }
 
 export const config = (key) => {
-  return mockConfig[key];
+  return mockConfig[key]
 }

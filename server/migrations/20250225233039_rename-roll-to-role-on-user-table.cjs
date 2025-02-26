@@ -2,18 +2,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.alterTable('users', function (t) {
-    t.renameColumn('roll', 'role');
-  });
-};
+    t.renameColumn('roll', 'role')
+  })
+}
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.alterTable('users', function (t) {
-    t.renameColumn('role', 'roll');
-  });
-};
+    t.renameColumn('role', 'roll')
+  })
+}

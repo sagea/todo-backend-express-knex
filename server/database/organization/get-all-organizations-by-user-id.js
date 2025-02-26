@@ -1,6 +1,5 @@
-
-import knex from "../connection.js";
-import { organizationReturnValue } from "./organization-return-value.js";
+import knex from '../connection.js'
+import { organizationReturnValue } from './organization-return-value.js'
 
 export const getAllOrganizationsByUserId = async (userId) => {
   const organizations = await knex('user_organization as uo')
@@ -14,6 +13,6 @@ export const getAllOrganizationsByUserId = async (userId) => {
       'o.updated_at as updatedAt',
       'o.deleted_at as deletedAt',
       'o.creator_id as creatorId',
-    ]);
-  return organizations;
+    ])
+  return organizations
 }

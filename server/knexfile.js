@@ -5,60 +5,59 @@
   But the .returning() method will only work for PostgreSQL, MSSQL, and Oracle databases.
 */
 import * as dotenv from 'dotenv'
-dotenv.config();
+dotenv.config()
 // require('dotenv').config();
 
 export default {
-
   test: {
     client: 'pg',
     connection: {
       database: process.env.PGDATABASE,
-      user:     process.env.PGUSER,
+      user: process.env.PGUSER,
       password: process.env.PGPASSWORD,
-      port:     process.env.PGPORT
+      port: process.env.PGPORT,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   development: {
     client: 'pg',
     connection: {
       database: process.env.PGDATABASE,
-      user:     process.env.PGUSER,
+      user: process.env.PGUSER,
       password: process.env.PGPASSWORD,
-      port:     process.env.PGPORT
+      port: process.env.PGPORT,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   staging: {
     client: 'pg',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password',
-      port:     '5432'
+      port: '5432',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
@@ -66,11 +65,10 @@ export default {
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
-};
+      tableName: 'knex_migrations',
+    },
+  },
+}

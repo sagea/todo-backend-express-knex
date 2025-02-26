@@ -1,8 +1,8 @@
-import createHttpError from 'http-errors';
-import { config } from './config.js';
-import { middleware } from './middleware-helpers.js';
-import jsonwebtoken from 'jsonwebtoken';
-import { getUserById } from '../database/user/get-user-by-id.js';
+import createHttpError from 'http-errors'
+import { config } from './config.js'
+import { middleware } from './middleware-helpers.js'
+import jsonwebtoken from 'jsonwebtoken'
+import { getUserById } from '../database/user/get-user-by-id.js'
 
 export const createJwt = (user) => {
   const jwtSecret = config('JWT_SECRET')
@@ -18,10 +18,10 @@ export const validateJwt = (jwt) => {
 
 export const authMiddleware = middleware(async (req, res, next) => {
   if (!req.headers.authorization) {
-    throw new createHttpError.Unauthorized('Unauthorized');
+    throw new createHttpError.Unauthorized('Unauthorized')
   }
   if (req.headers.authorization.split(' ')[0] !== 'Bearer') {
-    throw new createHttpError.Unauthorized('Unauthorized');
+    throw new createHttpError.Unauthorized('Unauthorized')
   }
   const token = req.headers.authorization.split(' ')[1]
   try {
@@ -31,7 +31,6 @@ export const authMiddleware = middleware(async (req, res, next) => {
 
     next()
   } catch (error) {
-    throw new createHttpError.Unauthorized('Unauthorized');
+    throw new createHttpError.Unauthorized('Unauthorized')
   }
-
-});
+})
